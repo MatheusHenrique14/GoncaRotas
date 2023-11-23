@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pontosturisticos.css">
+    <link rel="stylesheet" href="media.css">
+    <title>Gonça Rotas - Turismo</title>
+</head>
+
+<body>
+    <header>
+        <h1>Gonça Rotas</h1>
+    </header>
+    <div class="menu">
+        <nav>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <img src="./assets/logo-aredondada.png" alt="Logo" id="logo">
+                <a href="../index.html">
+                    <li>Home</li>
+                </a>
+                <span>|</span>
+                <a href="#contato">
+                    <li>Contato</li>
+                </a>
+                <a href="">
+                    <li><img src="./assets/login-icon.png" alt="Login"></li>
+                </a>
+            </ul>
+        </nav>
+        <script src="header.js"></script>
+    </div>
+    <section class="slider">
+
+        <div class="seta arrow-left"><i class="fas fa-chevron-circle-left"></i></div>
+
+        <img src="./assets/foto-1.jpg" alt="slide-1.jpg">
+        <img src="./assets/foto-2.jpg" alt="slide-2.jpg">
+        <img src="./assets/foto-3.jpg" alt="slide-3.jpg">
+        <img src="./assets/foto-4.jpg" alt="slide-4.jpg">
+
+        <div class="seta arrow-right"><i class="fas fa-chevron-circle-right"></i></div>
+
+        <div class="paginacao">
+
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+
+        </div>
+
+    </section>
+    <script>
+
+        const imgs = document.querySelectorAll(".slider img");
+        const dots = document.querySelectorAll(".botao i");
+        const leftArrow = document.querySelector(".arrow-left");
+        const rightArrow = document.querySelector(".arrow-right");
+
+        let currentIndex = 0;
+        let time = 3500; //Tempo padrão para apresentação de slides automática
+
+        const defClass = (startPos, index) => {
+            for (let i = startPos; i < imgs.length; i++) {
+                imgs[i].style.display = "none";
+                dots[i].classList.remove("fa-dot-circle");
+                dots[i].classList.add("fa-circle");
+            }
+            imgs[index].style.display = "block";
+            dots[index].classList.add("fa-dot-circle");
+        };
+
+        defClass(1, 0);
+
+        leftArrow.addEventListener("click", function () {
+            currentIndex <= 0 ? currentIndex = imgs.length - 1 : currentIndex--;
+            defClass(0, currentIndex);
+        });
+
+        rightArrow.addEventListener("click", function () {
+            currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+            defClass(0, currentIndex);
+        });
+
+        const startAutoSlide = () => {
+            setInterval(() => {
+                currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+                defClass(0, currentIndex);
+            }, time);
+        };
+
+        startAutoSlide(); //Inicia o slideshow
+
+    </script>
+    <div class="container">
+        <h1>Pontos Turísticos</h1>
+
+        <div class="card">
+            <div id="card1">
+                <img src="./imagens-cards/imagem-1.jpg" alt="">
+                <h3>Cachoeira do Retiro</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29449.33830537173!2d-45.8758520743725!3d-22.684815586409005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc7598f88edbe1%3A0x1cb944b325e91f8b!2sCachoeira%20do%20Retiro%20-%20S%C3%A3o%20Sebasti%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1699621449088!5m2!1spt-BR!2sbr"
+                    width="400" height="300" style=" border: 0px; border-radius: 25px;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="./Pontos/Retiro/retiro.html">Detalhes</a>
+            </div>
+            <div id="card1">
+                <img src="./imagens-cards/imagem-2.jpg" alt="">
+                <h3>Cachoeira da Sete Quedas</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.542181662419!2d-45.86307891941277!3d-22.670851976401657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc75b2a832e085%3A0x78a3306981286c64!2sCachoeira%20Sete%20Quedas!5e0!3m2!1spt-BR!2sbr!4v1699622296116!5m2!1spt-BR!2sbr"
+                    width="400" height="300" style=" border: 0px; border-radius: 25px;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="">Detalhes</a>
+            </div>
+            <div id="card1">
+                <img src="./imagens-cards/imagem-3.jpg" alt="">
+                <h3>Cachoeira do Cruzeiro</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.5402101740847!2d-45.868280924700315!3d-22.6709254294842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc75aa1a03423f%3A0x4146eabadb844caa!2sCachoeira%20do%20Cruzeiro!5e0!3m2!1spt-BR!2sbr!4v1699622956764!5m2!1spt-BR!2sbr"
+                    width="400" height="300" style="border: 0px; border-radius: 25px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="">Detalhes</a>
+            </div>
+            <div id="card1">
+                <img src="./imagens-cards/imagem-4.jpg" alt="">
+                <h3>Cachoeira dos Henriques</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.083525275341!2d-45.8868794247023!3d-22.61335592745009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cb8ae79d23732f%3A0x5c1c2d9a136f71e3!2sCachoeira%20dos%20Henriques!5e0!3m2!1spt-BR!2sbr!4v1699622895476!5m2!1spt-BR!2sbr"
+                    width="400" height="300" style="border: 0px; border-radius: 25px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="">Detalhes</a>
+            </div>
+            <div id="card1">
+                <img src="./imagens-cards/imagem-5.jpg" alt="">
+                <h3>Cachoeira do Simão</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.1901032182573!2d-45.85179912469997!3d-22.683966029945662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc7446d9882f83%3A0xf6ce5e82e71b07cd!2sCachoeira%20Sim%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1699622850724!5m2!1spt-BR!2sbr"
+                    width="400" height="300" style="border: 0px; border-radius: 25px;;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="">Detalhes</a>
+            </div>
+            <div id="card1">
+                <img src="./imagens-cards/imagem-6.jpg" alt="">
+                <h3>Mirante do Cruzeiro</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.850208801315!2d-45.8528177247006!3d-22.659372829075593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc75b9c0adfcb1%3A0x8a80642055199f8b!2sMirante%20do%20Cruzeiro!5e0!3m2!1spt-BR!2sbr!4v1699622826676!5m2!1spt-BR!2sbr"
+                    width="400" height="300" style="border: 0px; border-radius: 25px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="">Detalhes</a>
+            </div>
+            <div id="card1">
+                <img src="./imagens-cards/imagem-7.jpg" alt="">
+                <h3>Pedra do Forno</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.3922909149405!2d-45.870248924698934!3d-22.71365603099729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc755f50b4abfb%3A0xc7ad58f326111af0!2sPedra%20do%20Forno!5e0!3m2!1spt-BR!2sbr!4v1699622784932!5m2!1spt-BR!2sbr"
+                    width="400" height="300" style="border: 0px; border-radius: 25px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="">Detalhes</a>
+            </div>
+            <div id="card1">
+                <img src="./imagens-cards/imagem-8.jpg" alt="">
+                <h3>Cachoeira das Andorinhas</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.2384837895875!2d-45.85500067535298!3d-22.64489525777094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc7538bda249b3%3A0xa880f320e22b4d2c!2sCachoeira%20das%20Andorinhas!5e0!3m2!1spt-BR!2sbr!4v1699622746766!5m2!1spt-BR!2sbr"
+                    width="400" height="300" style="border: 0px; border-radius: 25px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="">Detalhes</a>
+            </div>
+        </div>
+    </div>
+        <div class="contato" id="contato">
+            <h1>Contato</h1>
+            <textarea name="mensagem" id="mensagem" placeholder="Digite sua mensagem..." cols="30" rows="10"></textarea>
+            <input type="submit" value="Enviar">
+        </div>
+        <hr>
+        <footer>
+            <h2>Desenvolvedores</h2>
+            <h3>Matheus Henrique e Leonardo Rocha</h3>
+        </footer>
+    </div>
+
+</body>
+
+</html>

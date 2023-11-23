@@ -1,0 +1,203 @@
+<?php
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+    <title>Gonça Rotas - Turismo</title>
+</head>
+
+<body>
+    <header>
+        <h1>Gonça Rotas</h1>
+    </header>
+    <div class="menu">
+        <nav>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <img src="./assets/logo-aredondada.png" alt="Logo" id="logo">
+                <a href="./index.html">
+                    <li>Home</li>
+                </a>
+                <span>|</span>
+                <a href="#clima">
+                    <li>Clima</li>
+                </a>
+                <span>|</span>
+                <a href="./PontosTuristicos/pontosturisticos.html">
+                    <li>Pontos Turísticos</li>
+                </a>
+                <span>|</span>
+                <a href="">
+                    <li>Centro</li>
+                </a>
+                <span>|</span>
+                <a href="#contato">
+                    <li>Contato</li>
+                </a>
+                <a href="">
+                    <li><img src="./assets/login-icon.png" alt="Login"></li>
+                </a>
+            </ul>
+        </nav>
+        <script src="header.js"></script>
+    </div>
+    <section class="slider">
+
+        <div class="seta arrow-left"><i class="fas fa-chevron-circle-left"></i></div>
+
+        <img src="./assets/foto-1.jpg" alt="slide-1.jpg">
+        <img src="./assets/foto-2.jpg" alt="slide-2.jpg">
+        <img src="./assets/foto-3.jpg" alt="slide-3.jpg">
+        <img src="./assets/foto-4.jpg" alt="slide-4.jpg">
+
+        <div class="seta arrow-right"><i class="fas fa-chevron-circle-right"></i></div>
+
+        <div class="paginacao">
+
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+
+        </div>
+
+    </section>
+    <script>
+
+        const imgs = document.querySelectorAll(".slider img");
+        const dots = document.querySelectorAll(".botao i");
+        const leftArrow = document.querySelector(".arrow-left");
+        const rightArrow = document.querySelector(".arrow-right");
+
+        let currentIndex = 0;
+        let time = 3500; //Tempo padrão para apresentação de slides automática
+
+        const defClass = (startPos, index) => {
+            for (let i = startPos; i < imgs.length; i++) {
+                imgs[i].style.display = "none";
+                dots[i].classList.remove("fa-dot-circle");
+                dots[i].classList.add("fa-circle");
+            }
+            imgs[index].style.display = "block";
+            dots[index].classList.add("fa-dot-circle");
+        };
+
+        defClass(1, 0);
+
+        leftArrow.addEventListener("click", function () {
+            currentIndex <= 0 ? currentIndex = imgs.length - 1 : currentIndex--;
+            defClass(0, currentIndex);
+        });
+
+        rightArrow.addEventListener("click", function () {
+            currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+            defClass(0, currentIndex);
+        });
+
+        const startAutoSlide = () => {
+            setInterval(() => {
+                currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+                defClass(0, currentIndex);
+            }, time);
+        };
+
+        startAutoSlide(); //Inicia o slideshow
+
+    </script>
+    <div class="container">
+        <h1>Sobre Gonçalves</h1>
+        <div class="sobre-goncalves">
+            <img src="./assets/sobre-goncalves.jpg" alt="Sobre Gonçalves">
+            <p> Gonçalves é uma encantadora cidade localizada no estado de Minas Gerais, Brasil. Situada na região da
+                Serra da Mantiqueira, a cidade é conhecida por sua beleza natural deslumbrante e clima ameno, atraindo
+                visitantes em busca de tranquilidade, paisagens pitorescas e atividades ao ar livre.
+                Com uma população relativamente pequena, Gonçalves oferece uma atmosfera serena e acolhedora, sendo um
+                refúgio popular para aqueles que desejam escapar do ritmo agitado das cidades maiores. A região é
+                repleta de trilhas para caminhadas, cachoeiras, riachos e montanhas, proporcionando oportunidades para
+                atividades como trekking, mountain bike e observação da natureza.
+                A cidade também é conhecida por sua produção artesanal e culinária típica. Restaurantes locais servem
+                pratos tradicionais mineiros, muitos dos quais são preparados com ingredientes frescos provenientes da
+                região. Além disso, a cidade abriga pequenas lojas de artesanato, onde os visitantes podem adquirir
+                lembranças únicas feitas por artistas locais.
+                Gonçalves é um destino ideal para quem busca relaxamento, contato com a natureza e a oportunidade de
+                explorar uma autêntica cidadezinha mineira, com sua cultura, história e hospitalidade únicas.</p>
+        </div>
+        <h1>Localização</h1>
+        <div class="paisagens">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117800.24186624572!2d-45.82155625!3d-22.68145405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc75bae1687f9f%3A0x4f0a0f64dc0b4eb7!2sGon%C3%A7alves%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1699290939302!5m2!1spt-BR!2sbr"
+                width="800px" height="700px" style="border:0; position: absolute; border: 5px solid rgb(19, 82, 53);"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <img src="./assets/paisagens.jpg" alt="">
+        </div>
+        <h1>Clima</h1>
+        <div class="api-tempo" id="clima">
+            <script>
+                (function (d, s, id) {
+                    if (d.getElementById(id)) {
+                        if (window.__TOMORROW__) {
+                            window.__TOMORROW__.renderWidget();
+                        }
+                        return;
+                    }
+                    const fjs = d.getElementsByTagName(s)[0];
+                    const js = d.createElement(s);
+                    js.id = id;
+                    js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+                    fjs.parentNode.insertBefore(js, fjs);
+                })(document, 'script', 'tomorrow-sdk');
+            </script>
+
+            <div class="tomorrow" data-location-id="011974" data-language="PT" data-unit-system="METRIC"
+                data-skin="light" data-widget-type="upcoming"
+                style="display: flex; gap: 0; padding:0 0 22px 0; position: relative; width: 100%; margin-bottom: 0;">
+                <a href="https://www.tomorrow.io/weather-api/" rel="nofollow noopener noreferrer" target="_blank"
+                    style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
+                    <img alt="Powered by the Tomorrow.io Weather API"
+                        src="https://weather-website-client.tomorrow.io/img/powered-by.svg" width="250" height="18" />
+                </a>
+            </div>
+        </div>
+        <div class="hospitalidade">
+            <h1>Hospitalidade</h1>
+            <div class="hospitalidade-images">
+                <div class="pousada">
+                    <img src="./assets/pousada.jpg" alt="">
+                    <p>Hoteis e Pousadas</p>
+                    <a href="./Hoteis/hoteis.html">Acessar</a>
+                </div>
+                <div class="estabelecimento">
+                    <img src="./assets/estabelecimento.jpg" alt="">
+                    <p>Estabelecimentos</p>
+                    <a href="./Estabelecimentos/estabelecimentos.html">Acessar</a>
+                </div>
+            </div>
+        </div>
+        <div class="contato" id="contato">
+            <h1>Contato</h1>
+            <textarea name="mensagem" id="mensagem" placeholder="Digite sua mensagem..." cols="30" rows="10"></textarea>
+            <input type="submit" value="Enviar">
+        </div>
+    </div>
+    <hr>
+    <footer>
+        <h2>Desenvolvedores</h2>
+        <h3>Matheus Henrique e Leonardo Rocha</h3>
+    </footer>
+</body>
+
+</html>

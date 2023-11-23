@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estabelecimentos.css">
+    <link rel="stylesheet" href="media.css">
+    <title>Gonça Rotas - Turismo</title>
+</head>
+
+<body>
+    <header>
+        <h1>Gonça Rotas</h1>
+    </header>
+    <div class="menu">
+        <nav>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <img src="./assets/logo-aredondada.png" alt="Logo" id="logo">
+                <a href="../index.html">
+                    <li>Home</li>
+                </a>
+                <span>|</span>
+                <a href="#contato">
+                    <li>Contato</li>
+                </a>
+                <a href="">
+                    <li><img src="./assets/login-icon.png" alt="Login"></li>
+                </a>
+            </ul>
+        </nav>
+        <script src="header.js"></script>
+    </div>
+    <section class="slider">
+
+        <div class="seta arrow-left"><i class="fas fa-chevron-circle-left"></i></div>
+
+        <img src="./assets/foto-1.jpg" alt="slide-1.jpg">
+        <img src="./assets/foto-2.jpg" alt="slide-2.jpg">
+        <img src="./assets/foto-3.jpg" alt="slide-3.jpg">
+        <img src="./assets/foto-4.jpg" alt="slide-4.jpg">
+
+        <div class="seta arrow-right"><i class="fas fa-chevron-circle-right"></i></div>
+
+        <div class="paginacao">
+
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+
+        </div>
+
+    </section>
+    <script>
+
+        const imgs = document.querySelectorAll(".slider img");
+        const dots = document.querySelectorAll(".botao i");
+        const leftArrow = document.querySelector(".arrow-left");
+        const rightArrow = document.querySelector(".arrow-right");
+
+        let currentIndex = 0;
+        let time = 3500; //Tempo padrão para apresentação de slides automática
+
+        const defClass = (startPos, index) => {
+            for (let i = startPos; i < imgs.length; i++) {
+                imgs[i].style.display = "none";
+                dots[i].classList.remove("fa-dot-circle");
+                dots[i].classList.add("fa-circle");
+            }
+            imgs[index].style.display = "block";
+            dots[index].classList.add("fa-dot-circle");
+        };
+
+        defClass(1, 0);
+
+        leftArrow.addEventListener("click", function () {
+            currentIndex <= 0 ? currentIndex = imgs.length - 1 : currentIndex--;
+            defClass(0, currentIndex);
+        });
+
+        rightArrow.addEventListener("click", function () {
+            currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+            defClass(0, currentIndex);
+        });
+
+        const startAutoSlide = () => {
+            setInterval(() => {
+                currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+                defClass(0, currentIndex);
+            }, time);
+        };
+
+        startAutoSlide(); //Inicia o slideshow
+
+    </script>
+    <div class="container">
+
+    <div class="estabelecimentos">
+        <h1>Estabelecimentos</h1>
+        <div class="card">
+            <div id="card-1">
+                <img src="./Imagens-Estabelecimentos/restaurantesaua.jpg" alt="Viver a Pedra">
+                <div class="descricao-1">
+                    <h3>Restaurante Sauá</h3>
+                    <p>Gonçalves possui natureza preservada e cultura que mantém antigos hábitos rurais. A produção
+                        orgânica existente na região, que fornece produtos diferenciados e frescos, e as práticas
+                        tradicionais da roça influenciam a elaboração dos pratos.
+                        O trabalho e criações do chef Vitor Pompeu atribuem ao Restaurante Sauá um estilo
+                        gastronômico que mistura técnicas da cozinha moderna com ingredientes e receitas da
+                        culinária regional.</p>
+                    <div class="abaixo-descricao">
+                        <span>Estrada Sertão do Cantagalo, km 7,5 Bairro Sertão do Cantagalo Gonçalves MG</span>
+                        <a href="./Detalhes-Estabelecimentos/saua.html"><input type="button" name="botao" value="Detalhes"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="card-2">
+                <img src="./Imagens-Estabelecimentos/chalezinhogastrobar.jpg" alt="Cabanas no Mundo">
+                <div class="descricao-2">
+                    <h3>Restaurante Chalezinho Gastrobar</h3>
+                    <p> O Restaurante Chalezinho Gastrobar fica no centro de Gonçalves-MG e oferece pratos da
+                        culinária mineira, ambiente agradável a preços justos. Instalado em um espaço bastante
+                        arejado e agradável, o Restaurante Chalezinho é bem fácil de ser localizado.O cardápio conta
+                        com petiscos como Dadinhos de Tapioca e Arancini de Costela, pratos mais completos como
+                        Costelinha, Fondue e Escalope de Filé, hambúrgueres e cervejas tradicionais e artesanais
+                        produzidas na região.</p>
+                    <div class="abaixo-descricao-2">
+                        <span> Antonio Caetano da Rosa, 229 - centro, Gonçalves - MG</span>
+                        <a href="./Detalhes-Estabelecimentos/gastrobar.html"><input type="button" name="botao" value="Detalhes"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="card-3">
+                <img src="./Imagens-Estabelecimentos/armazemsaobento.jpg" alt="Cabanas no Mundo">
+                <div class="descricao-3">
+                    <h3>Armazém São Bento</h3>
+                    <p>
+                        Numa localização privilegiada, o Armazém São Bento é mais que um lugar, é um conceito, a
+                        materialização de um projeto que “armazena” experiências, resultado de olhares sensíveis
+                        sobre os fazeres da região. Além de tomar um bom café e se se deliciar com quitutes
+                        artesanais contemplando o jardim, a ideia é que o público possa prolongar esta sensação de
+                        conforto na alma, levando para casa uma peça que lhe traga a lembrança dessa experiência e a
+                        certeza de um “até breve”.</p>
+                    <div class="abaixo-descricao-3">
+                        <span>217 Rua Antônio Caetano da Rosa, Gonçalves - MG</span>
+                        <a href="./Detalhes-Estabelecimentos/armazem.html"><input type="button" name="botao" value="Detalhes"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="card-4">
+                <img src="./Imagens-Estabelecimentos/cervejaria3orelhas.jpg" alt="Cabanas no Mundo">
+                <div class="descricao-4">
+                    <h3>Cervejaria 3 Orelhas</h3>
+                    <p>A 3 Orelhas é uma cervejaria artesanal, rural, familiar e independente. Nossa fábrica fica na
+                        cidade de Gonçalves, em Minas Gerais, emoldurada pela linda Serra da Mantiqueira. No nosso
+                        sítio, o Santa Fé, produzimos os mais variados estilos de cervejas, feitas com muita
+                        tecnologia, paixão e criatividade. O amplo bar da fábrica fica ao lado da nossa parte
+                        produtiva, onde vocês podem degustar as nossas criações direto da fonte e aproveitar o
+                        visual exuberante.</p>
+                    <div class="abaixo-descricao-4">
+                        <span>Estrada da Terra Fria, km 5, Gonçalves, MG</span>
+                        <a href="./Detalhes-Estabelecimentos/3orelhas.html"><input type="button" name="botao" value="Detalhes"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="card-5">
+                <img src="./Imagens-Estabelecimentos/nascentedastrutas.jpg" alt="Cabanas no Mundo">
+                <div class="descricao-5">
+                    <h3>Nascente das Trutas</h3>
+                    <p>Se estiver com fome depois de passear em Igreja Nossa Senhora das Dores, vá a este
+                        restaurante para comer. O menu de restaurante Nascente das Trutas é recomendado para os
+                        amantes da culinária. Chegou a hora de provar gorgonzola fascinante, pão de queijo bom e
+                        roquefort saboroso. Prove queijadas ótimas neste restaurante quando estiver por perto. Após
+                        um longo dia de trabalho, pode provar bom cordial.</p>
+                    <div class="abaixo-descricao-5">
+                        <span>Rua Antonio Caetano da Rosa, 173 - Centro, Gonçalves - MG</span>
+                        <a href="./Detalhes-Estabelecimentos/nascente.html"><input type="button" name="botao"
+                                value="Detalhes"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contato" id="contato">
+        <h1>Contato</h1>
+        <textarea name="mensagem" id="mensagem" placeholder="Digite sua mensagem..." cols="30" rows="10"></textarea>
+        <input type="submit" value="Enviar">
+    </div>
+    </div>
+    <hr>
+    <footer>
+        <h2>Desenvolvedores</h2>
+        <h3>Matheus Henrique e Leonardo Rocha</h3>
+    </footer>
+</div>
+
+</body>

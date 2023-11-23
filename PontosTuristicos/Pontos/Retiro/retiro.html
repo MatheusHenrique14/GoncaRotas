@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="retiro.css">
+    <link rel="stylesheet" href="media.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Gonça Rotas - Turismo</title>
+</head>
+
+<body>
+    <header>
+        <h1>Gonça Rotas</h1>
+    </header>
+    <div class="menu">
+        <nav>
+            <ul class="nav-list">
+                <img src="../assets/logo-aredondada.png" alt="Logo" id="logo">
+                <a href="../hoteis.html">
+                    <li>Pontos Turisticos</li>
+                </a>
+                <span>|</span>
+                <a href="#contato">
+                    <li>Contato</li>
+                </a>
+                <a href="">
+                    <li><img src="../assets/login-icon.png" alt="Login"></li>
+                </a>
+            </ul>
+        </nav>
+        <script src="header.js"></script>
+    </div>
+    <section class="slider">
+
+        <div class="seta arrow-left"><i class="fas fa-chevron-circle-left"></i></div>
+
+        <img src="../assets/foto-1.jpg" alt="slide-1.jpg">
+        <img src="../assets/foto-2.jpg" alt="slide-2.jpg">
+        <img src="../assets/foto-3.jpg" alt="slide-3.jpg">
+        <img src="../assets/foto-4.jpg" alt="slide-4.jpg">
+
+        <div class="seta arrow-right"><i class="fas fa-chevron-circle-right"></i></div>
+
+        <div class="paginacao">
+
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+
+        </div>
+
+    </section>
+    <script>
+
+        const imgs = document.querySelectorAll(".slider img");
+        const dots = document.querySelectorAll(".botao i");
+        const leftArrow = document.querySelector(".arrow-left");
+        const rightArrow = document.querySelector(".arrow-right");
+
+        let currentIndex = 0;
+        let time = 3500; //Tempo padrão para apresentação de slides automática
+
+        const defClass = (startPos, index) => {
+            for (let i = startPos; i < imgs.length; i++) {
+                imgs[i].style.display = "none";
+                dots[i].classList.remove("fa-dot-circle");
+                dots[i].classList.add("fa-circle");
+            }
+            imgs[index].style.display = "block";
+            dots[index].classList.add("fa-dot-circle");
+        };
+
+        defClass(1, 0);
+
+        leftArrow.addEventListener("click", function () {
+            currentIndex <= 0 ? currentIndex = imgs.length - 1 : currentIndex--;
+            defClass(0, currentIndex);
+        });
+
+        rightArrow.addEventListener("click", function () {
+            currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+            defClass(0, currentIndex);
+        });
+
+        const startAutoSlide = () => {
+            setInterval(() => {
+                currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+                defClass(0, currentIndex);
+            }, time);
+        };
+
+        startAutoSlide(); //Inicia o slideshow
+
+    </script>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 50px;">Cachoeira do Retiro</h1>
+
+        <div class="mapa">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.7751089961434!2d-45.8611118182685!3d-22.699414326289958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc7598f88edbe1%3A0x1cb944b325e91f8b!2sCachoeira%20do%20Retiro%20-%20S%C3%A3o%20Sebasti%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1700226769564!5m2!1spt-BR!2sbr"
+                width="600" height="450" style="border:1px solid rgb(19, 82, 53);" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="sobre">
+                <h1>Sobre</h1>
+                <p>É possível tomar banho ( bem gelado, por sinal!) ou mesmo aproveitar o sol nas pedras, que é uma das
+                    maiores cachoeiras de Gonçalves. Parte de seu percurso fica em um trecho bem pertinho do centro da
+                    cidade. A Cachoeira do Retiro fica localizada na propriedade da Pousada Solar D’Araucária.</p>
+            </div>
+        </div>
+        <h1 style="text-align: center;"> Rotas Recomendadas</h1>
+        <div class="rota">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d29449.150871392583!2d-45.8719388678945!3d-22.685687982296983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e0!4m5!1s0x94cc7598f88edbe1%3A0x1cb944b325e91f8b!2sCachoeira%20do%20Retiro%20-%20S%C3%A3o%20Sebasti%C3%A3o%20-%20Bairro%20S%C3%A3o%20Sebasti%C3%A3o%20das%20Tr%C3%AAs%20Orelhas%2C%20Gon%C3%A7alves%20-%20MG!3m2!1d-22.6994144!2d-45.856240899999996!4m5!1s0x94cc75becab08f7d%3A0x3136a75521b55e11!2sLUTS%20Chal%C3%A9s%20%C2%AE%20%7C%20Hospedagem%20Boutique%20-%20Gon%C3%A7alves%20%2F%20MG%20-%20Estrada%20do%20Retiro%2C%20Gon%C3%A7alves%20-%20MG!3m2!1d-22.675457899999998!2d-45.8479806!4m5!1s0x94cc744c0bd41993%3A0x2f53d72f4a14d2c8!2sPousada%20Solar%20D&#39;%20Arauc%C3%A1ria%20-%20Retiro%2C%20Gon%C3%A7alves%20-%20MG!3m2!1d-22.6743006!2d-45.8519034!4m5!1s0x94cc744e7d2b24b9%3A0xea1450948a96a0a5!2sSebastian%20Bar%20-%20Retiro%2C%20Gon%C3%A7alves%20-%20MG!3m2!1d-22.6766774!2d-45.8543856!4m5!1s0x94cc755ecbe2cc33%3A0x612563e3f3273d2c!2sOdara%20Cervejaria%20-%20Estrada%20do%20Retiro%2C%20Gon%C3%A7alves%20-%20MG!3m2!1d-22.6687302!2d-45.853605699999996!4m5!1s0x94cc75b2a832e085%3A0x78a3306981286c64!2sCachoeira%20Sete%20Quedas%20-%20Retiro%2C%20Gon%C3%A7alves%20-%20MG!3m2!1d-22.670856999999998!2d-45.858208!5e0!3m2!1spt-BR!2sbr!4v1700230032210!5m2!1spt-BR!2sbr"
+                width="600" height="450" style="border:1px solid rgb(19, 82, 53);" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="pontos">
+                <p><i class='bx bxs-map-pin'></i>Cachoeira Sete Quedas</p>
+                <p><i class='bx bxs-map-pin'></i></p>
+                <p><i class='bx bxs-map-pin'></i></p>
+                <p><i class='bx bxs-map-pin'></i></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

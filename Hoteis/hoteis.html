@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hoteis.css">
+    <link rel="stylesheet" href="media.css">
+    <title>Gonça Rotas - Turismo</title>
+</head>
+
+<body>
+    <header>
+        <h1>Gonça Rotas</h1>
+    </header>
+    <div class="menu">
+        <nav>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <img src="./assets/logo-aredondada.png" alt="Logo" id="logo">
+                <a href="../index.html">
+                    <li>Home</li>
+                </a>
+                <span>|</span>
+                <a href="#contato">
+                    <li>Contato</li>
+                </a>
+                <a href="">
+                    <li><img src="./assets/login-icon.png" alt="Login"></li>
+                </a>
+            </ul>
+        </nav>
+        <script src="header.js"></script>
+    </div>
+    <section class="slider">
+
+        <div class="seta arrow-left"><i class="fas fa-chevron-circle-left"></i></div>
+
+        <img src="./assets/foto-1.jpg" alt="slide-1.jpg">
+        <img src="./assets/foto-2.jpg" alt="slide-2.jpg">
+        <img src="./assets/foto-3.jpg" alt="slide-3.jpg">
+        <img src="./assets/foto-4.jpg" alt="slide-4.jpg">
+
+        <div class="seta arrow-right"><i class="fas fa-chevron-circle-right"></i></div>
+
+        <div class="paginacao">
+
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+            <div class="botao"> <i class="far fa-circle"></i> </div>
+
+        </div>
+
+    </section>
+    <script>
+
+        const imgs = document.querySelectorAll(".slider img");
+        const dots = document.querySelectorAll(".botao i");
+        const leftArrow = document.querySelector(".arrow-left");
+        const rightArrow = document.querySelector(".arrow-right");
+
+        let currentIndex = 0;
+        let time = 3500; //Tempo padrão para apresentação de slides automática
+
+        const defClass = (startPos, index) => {
+            for (let i = startPos; i < imgs.length; i++) {
+                imgs[i].style.display = "none";
+                dots[i].classList.remove("fa-dot-circle");
+                dots[i].classList.add("fa-circle");
+            }
+            imgs[index].style.display = "block";
+            dots[index].classList.add("fa-dot-circle");
+        };
+
+        defClass(1, 0);
+
+        leftArrow.addEventListener("click", function () {
+            currentIndex <= 0 ? currentIndex = imgs.length - 1 : currentIndex--;
+            defClass(0, currentIndex);
+        });
+
+        rightArrow.addEventListener("click", function () {
+            currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+            defClass(0, currentIndex);
+        });
+
+        const startAutoSlide = () => {
+            setInterval(() => {
+                currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
+                defClass(0, currentIndex);
+            }, time);
+        };
+
+        startAutoSlide(); //Inicia o slideshow
+
+    </script>
+    <div class="container">
+
+        <div class="hoteis" id="inf">
+            <h1>Hotéis e Pousadas</h1>
+            <div class="card">
+              <div id="card-1">
+                <img src="./Imagens-Hoteis/viverapedra.jpg" alt="Viver a Pedra">
+                <div class="descricao-1">
+                  <h3>Pousada Viver a Pedra</h3>
+                  <p>Situada em Gonçalves, a 33 km do Museu Felicia Leirner, a Pousada Viver a Pedra oferece acomodações com
+                    piscina ao ar livre, estacionamento privativo gratuito, academia e jardim. A propriedade oferece serviço
+                    de
+                    quarto, balcão de turismo e Wi-Fi gratuito em todas as áreas. Você pode desfrutar de uma bebida no bar.
+                    Os quartos da pousada dispõem de varanda. Todos os quartos incluem ar-condicionado e TV de tela plana, e
+                    algumas unidades da Pousada Viver A Pedra tem vista para a cidade.</p>
+                  <div class="abaixo-descricao">
+                    <span>10,5 km do Centro</span>
+                    <a href="./Detalhes-Hoteis/viverapedra.html"><input type="button" name="botao" value="Detalhes"></a>
+                  </div>
+                </div>
+              </div>
+              <div id="card-2">
+                <img src="./Imagens-Hoteis/cabanasnomundo.jpg" alt="Cabanas no Mundo">
+                <div class="descricao-2">
+                  <h3>Pousada Cabanas no Mundo</h3>
+                  <p>A Pousada Cabanas no Mundo oferece acomodações a 2,5 km do centro da cidade de Gonçalves. O Wi-Fi
+                    gratuito
+                    está disponível nas áreas comuns.Todas as unidades dispõem de área para refeições e área de estar com TV
+                    de tela plana. Algumas unidades
+                    dispõem de sacada e/ou varanda térrea com vista da montanha. Há também uma cozinha em algumas unidades,
+                    equipada com frigobar. Para sua comodidade, a roupa de cama é fornecida.A Pousada Cabanas no Mundo também
+                    possui uma sauna. Você pode desfrutar do terraço ao ar livre e do
+                    restaurante no local.</p>
+                  <div class="abaixo-descricao-2">
+                    <span>2,5 km do Centro</span>
+                    <a href="./Detalhes-Hoteis/pousadacabanaspelomundo.html"><input type="button" name="botao" value="Detalhes"></a>
+                  </div>
+                </div>
+              </div>
+              <div id="card-3">
+                <img src="./Imagens-Hoteis/residencialdasaucarias.jpg" alt="Cabanas no Mundo">
+                <div class="descricao-3">
+                  <h3>Residencial das Araucárias</h3>
+                  <p>Pousada Caminho Da Roca é um hotel familiar em Gonçalves. Os hóspedes desfrutarão de pequeno-almoço
+                    continental e acesso para piscina ao ar livre durante a sua estadia.
+                    Está a uma distância de 3.4 km de Cachoeira Simão. A propriedade encontra-se a 6 km do centro da cidade.
+                    As comodidades fornecidas em cada quarto incluem frigobar, televisão multicanal e hi-fi. Vai encontrar
+                    secador de cabelo e toalhas nas casas de banho.
+                    Lá pode também apreciar Jacuzzi e banheira quente.</p>
+                  <div class="abaixo-descricao-3">
+                    <span>6 km do Centro</span>
+                    <a href="./Detalhes-Hoteis/residencialdasaraucarias.html"><input type="button" name="botao"
+                        value="Detalhes"></a>
+                  </div>
+                </div>
+              </div>
+              <div id="card-4">
+                <img src="./Imagens-Hoteis/pousadasomdasaguas.jpg" alt="Cabanas no Mundo">
+                <div class="descricao-4">
+                  <h3>Pousada Som das Águas</h3>
+                  <p>Localizada a aproximadamente 7 km da cidade de Bueno Brandão, e a aproximadamente 21 km da cidade de
+                    Socorro (Estado de São Paulo), a pousada conta com várias piscinas naturais, corredeiras que dão acesso a
+                    cachoeira dos Félix. E uma ampla área verde para realização de diversas atividades ao ar livre.</p>
+                  <div class="abaixo-descricao-4">
+                    <span>7 km do Centro</span>
+                    <a href="./Detalhes-Hoteis/somdasaguas.html"><input type="button" name="botao" value="Detalhes"></a>
+                  </div>
+                </div>
+              </div>
+              <div id="card-5">
+                <img src="./Imagens-Hoteis/recantodamantiqueira.jpg" alt="Cabanas no Mundo">
+                <div class="descricao-5">
+                  <h3>Chalé Recanto da Mantiqueira</h3>
+                  <p>Em meio às montanhas da Serra da Mantiqueira no município de Gonçalves, encontra-se os Chalés Recanto da
+                    Mantiqueira construídos para proporcionar todo conforto e descanso para nossos hóspedes. Um de nossos
+                    chalés é o Chalé Jacarandá , um chalé exclusivo para casais! proporcionando uma excelente estadia para
+                    aqueles que procuram relaxar e apreciar as belezas da cidade! Localizada próxima a cachoeira e centro da
+                    cidade, com espaço amplo e uma vista deslumbrante do deck para a mata nativa.</p>
+                  <div class="abaixo-descricao-5">
+                    <span>1 km do Centro</span>
+                    <a href="./Detalhes-Hoteis/recantodamantiqueira.html"><input type="button" name="botao"
+                        value="Detalhes"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <div class="contato" id="contato">
+        <h1>Contato</h1>
+        <textarea name="mensagem" id="mensagem" placeholder="Digite sua mensagem..." cols="30" rows="10"></textarea>
+        <input type="submit" value="Enviar">
+    </div>
+    </div>
+    <hr>
+    <footer>
+        <h2>Desenvolvedores</h2>
+        <h3>Matheus Henrique e Leonardo Rocha</h3>
+    </footer>
+</div>
+
+</body>
